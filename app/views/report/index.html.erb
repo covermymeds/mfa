@@ -1,0 +1,8 @@
+<div class="panel panel-default">
+   <div class="panel-heading">MFA Conversion Report</div>
+   <table class='table table-striped table-condensed'>
+     <tr><td>Active</td><td><%= @num_active_users -%></td></tr>
+     <tr><td>Not Active</td><td><%= @num_inactive_users -%></td></tr>
+     <tr><td>Total Users</td><td><%= @users.count -%></td></tr>
+   </table>
+</div>

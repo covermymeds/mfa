@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= Settings.org_name -%> MFA Dashboard</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= render "layouts/navbar" %>
+
+<div class="container-fluid">
+  <div class="row" id="alerts">
+    <%= render "layouts/messages" %>
+  </div>
+  <div class="row">
+    <div class="main">
+      <%= yield %>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

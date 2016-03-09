@@ -1,0 +1,19 @@
+mailer:
+   from_address: support@example.com
+   to_domain: example.com
+   smtp_server: 'smtp.example.com'
+   port: 25
+   enable_starttls_auto: false
+ldap:
+   type: active_directory
+   host: ad.example.com
+   port: 636
+   bind_dn: uid=Administrator,dc=example,dc=com
+   bind_pw: secret
+   totp_field: extensionAttribute1
+   enabled_field: extensionAttribute2
+   dn_field: sAMAccountName
+   admin_group: 'cn=Domain Admins,dc=example,dc=com'
+totp_pass: abcdefghijklmnopqrstuvwxyz
+totp_salt: 1234567890abcdef
+org_name: ExampleCo

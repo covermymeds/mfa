@@ -1,0 +1,56 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ */
+
+@import "jquery-ui";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 70px;
+}
+
+/*
+ * Main content
+ */
+main {
+   padding: 20px;
+}
+
+@media (min-width: 768px) {
+   .main {
+      padding-right: 40px;
+      padding-left: 40px;
+   }
+}
+
+.main .page-header {
+   margin-top: 0;
+}
+
+.alert-danger,
+.alert-error {
+   color: #b94a48;
+   background-color: #f2dede;
+   border-color: #eed3d7;
+}
+
+.panel-login {
+   .row {
+      padding-bottom: 20px;
+   }
+   
+   width: 400px;
+}

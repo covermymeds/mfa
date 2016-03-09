@@ -1,0 +1,9 @@
+<div class="panel panel-default">
+   <div class="panel-heading">Search Results</div>
+   <table class='table table-striped table-condensed'>
+      <tr><th>Full Name</th><th>Username</th></th><th>Active</th></tr>
+      <% @users.each do |user| %>
+         <tr><td><%= link_to user.name, mfa_path(user) -%></td><td><%= user.sAMAccountName %></td><td><%= user.mfa_active? ? "active" : "inactive" -%></td></tr>
+      <% end -%>
+   </table>
+</div>

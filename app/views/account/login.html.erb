@@ -1,0 +1,18 @@
+<%= form_tag("/account/do_login", :method => "post") do %>
+<div class="panel panel-primary panel-login">
+   <div class="panel-heading">Login</div>
+   <div class="panel-body">
+         <div class="row">
+            <div class="col-md-3"><%= label_tag(:username, "Username:") %></div>
+            <div class="col-md-3"><%= text_field_tag(:username) %></div>
+         </div>
+         <div class="row">
+            <div class="col-md-3"><%= label_tag(:password, "Password:") %></div>
+            <div class="col-md-3"><%= password_field_tag(:password) %></div>
+         </div>
+   </div>
+         <div class="panel-footer">
+            <%= submit_tag("Login") %>
+         </div>
+</div>
+<% end -%>

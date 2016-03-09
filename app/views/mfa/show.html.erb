@@ -1,0 +1,67 @@
+<div class="panel panel-default">
+   <div class="panel-heading">MFA Configuration for <%= @user.name -%> (<strong><%= @user.sAMAccountName -%></strong>)</div>
+   <div class="panel-body">
+      <div id="mfa-status" class="col-md-9">
+         <p>MFA is currently:
+         <% if @user.mfa_active? -%>
+            <strong>Active</strong>
+         <% else -%>
+            <strong>Inactive</strong>
+         <% end -%>
+         </p>
+
+         <% if @user.mfa_active? -%>
+            <p>Hello! Your MFA token is currently enabled.
+            If you need to reset your token, please click on the 'Revoke Token' button below
+            </p>
+         <% else -%>
+				<p>Welcome to the <%= Settings.org_name -%> Google Authenticator setup!</p>
+            <p>In order to continue, you will need the Google Authenticator app from the
+            <%= link_to "Google Play", "https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2" -%>
+            or
+            <%= link_to "iOS Store", "https://itunes.apple.com/us/app/google-authenticator/id388497605" -%>.
+            Once installed, scan the QR code shown here, and enter your two-factor code in the verification form.
+            Then you'll be ready to go.</p>
+         <% end -%>
+      </div>
+      <div id="mfa-qr-code" class="col-md-3">
+         <% if !@user.mfa_active? -%><img src="<%= @user.google_qr_uri -%>"><% end -%>
+      </div>
+   </div>
+   <div class='panel-footer'>
+      <div class='row'>
+         <div class='col-md-8'>
+            <%= form_tag(mfa_path(@user), method: 'put', id: "verify_code") do %>
+               <%= label_tag(:verify_code, "Verify Code:") %>
+               <%= text_field_tag(:verify_code) %>
+               <%= submit_tag("Submit") %>
+            <% end -%>
+         </div>
+         <div class='col-md-2'>
+            <% if @current_user.admin? and  @user.mail != nil and @user.mail != '' -%>
+               <%= link_to 'Email QR Code', email_mfa_path(@user),
+                  method: :put,
+                  data: { confirm: 'Email QR code to ' + @user.mail + '?' },
+                  class: 'btn btn-default pull-right',
+                  role: 'button' %>
+            <% else -%>
+               &nbsp;
+            <% end -%>
+         </div>
+         <div class='col-md-2'>
+            <% if @user.mfa_active? -%>
+               <%= link_to 'Revoke Token', mfa_path(@user),
+                  method: :delete,
+                  data: { confirm: 'Are you sure? This action cannot be undone!' },
+                  class: 'btn btn-default pull-right',
+                  role: 'button' %>
+            <% else -%>
+               <%= link_to 'Regenerate Token', regen_mfa_path(@user),
+                   method: :put,
+                   class: 'btn btn-default pull-right',
+                   role: 'button' %>
+             <% end -%>
+         </div>
+      </div>
+   </div>
+</div>

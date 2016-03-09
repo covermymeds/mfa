@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta content='text/html'; charset='UTF-8' http-equiv='Content-Type' />
+   </head>
+   <body>
+		<p>Welcome to the <%= Settings.org_name -%> Google Authenticator setup!</p>
+      <p>In order to continue, you will need the Google Authenticator app from the
+      <%= link_to "Google Play", "https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2" -%>
+      or
+      <%= link_to "iOS Store", "https://itunes.apple.com/us/app/google-authenticator/id388497605" -%>.
+      
+      Once installed, scan the QR code shown here, and enter your two-factor code in the verification form.
+      Then you'll be ready to go.</p>
+
+      <%= image_tag attachments['qrcode.jpg'].url %>
+   </body>
+</html>

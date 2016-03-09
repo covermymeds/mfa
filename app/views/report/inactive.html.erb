@@ -1,0 +1,8 @@
+<div class="panel panel-default">
+   <div class="panel-heading">MFA Inactive Users</div>
+   <table class='table table-striped table-condensed'>
+     <% @inactive_users.each do |u| -%>
+     <tr><td><%= u.sAMAccountName -%></td></tr>
+     <% end -%>
+   </table>
+</div>

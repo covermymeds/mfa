@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+
+path=$(dirname $0)
+
+cd $path/..
+bundle install
+bundle exec rake db:migrate
+mkdir tmp
+touch tmp/restart.txt
