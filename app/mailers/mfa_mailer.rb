@@ -1,7 +1,7 @@
 require 'net/http'
 
 class MfaMailer < ActionMailer::Base
-  default from: Settings.mail_from_address
+  default from: Settings.mailer.from_address
 
   def mfa_email(user)
      @user = user
